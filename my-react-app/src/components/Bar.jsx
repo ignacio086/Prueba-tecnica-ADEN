@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import '../style/App.css'
+import { Icon } from '@iconify/react';
 
 export default function Bar({tipo }){
     if(tipo==='nav'){
@@ -9,7 +10,7 @@ export default function Bar({tipo }){
                 <div></div>
                 <img alt='logo' src='/cocteles.png' style={{width:'86px',height:'86px',objectFit:'contain'}}></img>
                 <div style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-                        <Link to='/' className="nav-a">Menu</Link>
+                        <Link to='/' className="nav-a">Menú</Link>
                         <Link to='Recetas'  className="nav-a">Recetas</Link>
                 </div>
             </nav>
@@ -18,7 +19,7 @@ export default function Bar({tipo }){
     }
     return(
         <footer className="bar" style={{backgroundColor:'#000',position:'relative',display:'flex',justifyContent:'center',alignItems:'center',bottom:0}}>
-            <p style={{color:'white'}}>Aviso Legal. Politica de privacidad. Politica de cookies. Contacto @holacocteles.com</p>
+            <p style={{color:'white'}}>Aviso Legal. Política de privacidad. Política de cookies. Contacto <Icon icon="ph:copyright" />holacocteles.com</p>
         </footer>
     )
 }

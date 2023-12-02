@@ -34,7 +34,9 @@ function Recetas(){
     const handleChange = (e)=>{
         setTrago(e.target.value)
     }
-
+    const handleSubmit = ()=>{
+        console.log(trago)
+    }
     useEffect(() => {
         axios.get(urlApi).then((res) => {
             setApi(res.data.drinks);
@@ -59,7 +61,7 @@ function Recetas(){
                         <Icon icon="pepicons-pencil:line-y" />
                         <Icon icon="material-symbols:search" />
                     </div>
-                    <Obutton onClick={()=>{}}>Buscar</Obutton>
+                    <Obutton onClick={()=>{handleSubmit()}}>Buscar</Obutton>
                 </div>
                 <p style={{marginLeft:25}}>Se encontraron {api.length} resultados de {drink.drink}</p>
                 <h4 style={{marginLeft:25}}>Explora las siguientes opciones</h4>

@@ -38,6 +38,7 @@ body{
   margin: 10px;
   color: white;
   cursor: pointer;
+  text-decoration: none;
 }
 .nav-a:hover{
   color: #FFDE59;
