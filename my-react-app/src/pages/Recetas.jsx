@@ -1,9 +1,9 @@
-import './style/Recetas.css'
-import Bar from './components/Bar'
+import '../style/Recetas.css'
+import Bar from '../components/Bar'
 import { Icon } from '@iconify/react';
-import Input from './components/Input';
-import Obutton from './components/Obutton';
-import Tarjeta from './components/Tarjeta';
+import Input from '../components/Input';
+import Obutton from '../components/Obutton';
+import Tarjeta from '../components/Tarjeta';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import {  useSelector } from 'react-redux/es/hooks/useSelector';
@@ -12,10 +12,15 @@ import {  useSelector } from 'react-redux/es/hooks/useSelector';
 
 
 function Recetas(){
+    //variable para crear la url
     let urlApi=''
+    //estado para guardar la informacion proveniente desde la api
     const [api, setApi] = useState([])
+    //variable con useSelector para traer informacion desde la store: categoria y nombre de trago
     const drink = useSelector(state=>state.tragos)
+    //variable con useSelector para traer informacion de la store: trago buscado
     const drinkHistory = useSelector(state=>state.historialTragos)
+    //switch creado para variar la url de la api dependiendo la categoria y el trago
     switch(drink.categoria){
         case 'categorias':
             urlApi=`http://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drink.drink}`
@@ -30,13 +35,16 @@ function Recetas(){
             urlApi=`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=mojito`
             break
     }
+    //estado para cambiar el texto del input
     const [trago,setTrago] = useState(drink.drink)
+    //funcion para actualizar el texto del input
     const handleChange = (e)=>{
         setTrago(e.target.value)
     }
     const handleSubmit = ()=>{
         console.log(trago)
     }
+    //hook usado para realizar el consumo de la api y actualizar el estado de api
     useEffect(() => {
         axios.get(urlApi).then((res) => {
             setApi(res.data.drinks);
